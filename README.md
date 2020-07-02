@@ -6,7 +6,7 @@
 04. sudo chown -R $USER:$USER <папка проекта> - задаем права пользователя на каталог проекта (не root)
 05. в папке проекта создаем папку dbdata - для сохранения данных БД
 06. cp .env.example .env
-07. меняем в .env настройки по усмотрению (название БД, имя пользователя, пароль)
+07. указываем в .env и docker-compose.yml настройки по усмотрению (название БД, имя пользователя, пароль)
 08. docker-compose up -d - поднимаем контейнеры
 09. docker-compose exec app php artisan key:generate - генерируем ключ
 10. docker-compose exec app php artisan config:cache - кэшируем настройки (при необходимости)
@@ -17,9 +17,12 @@
 01. docker-compose exec db bash - создаем пользователя mysql
 02. mysql -u root -p - ввозим пароль рута, указанного в docker-compose.yml
 03. show databases; - проверяем существование БД
-04. GRANT ALL ON laravel.* TO '<логин>'@'%' IDENTIFIED BY '<пароль>'; - задаем локин/пароль, указанные в .env
-05. FLUSH PRIVILEGES; - применяем новые права пользователя и выходим
-06. docker-compose exec app php artisan migrate - запускаем миграции
+04. CREATE USER '<логин>'@'localhost' IDENTIFIED BY '<пароль>'; - создаем пользователя по данным из .env
+05. GRANT ALL PRIVILEGES ON <имя БД>.* TO '<логин>'@'localhost'; - задаем права на указанную базу
+06. FLUSH PRIVILEGES; - применяем новые права пользователя
+07. SHOW GRANTS FOR <логин пользователя>@localhost; - проверяем назначенные права пользователю
+08. exit - выходим из БД и контейнера
+09. docker-compose exec app php artisan migrate - запускаем миграции
 
 #### ===============================
 
