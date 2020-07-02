@@ -12,12 +12,16 @@
 10. docker-compose exec app php artisan config:cache - кэшируем настройки (при необходимости)
 11. в /etc/hosts и /<папка проекта>/nginx/conf.d/app.conf указываем имя сервера
 
+#### ===============================
+
 01. docker-compose exec db bash - создаем пользователя mysql
 02. mysql -u root -p - ввозим пароль рута, указанного в docker-compose.yml
 03. show databases; - проверяем существование БД
 04. GRANT ALL ON laravel.* TO '<логин>'@'%' IDENTIFIED BY '<пароль>'; - задаем локин/пароль, указанные в .env
 05. FLUSH PRIVILEGES; - применяем новые права пользователя и выходим
 06. docker-compose exec app php artisan migrate - запускаем миграции
+
+#### ===============================
 
 01. docker-compose exec app php artisan tinker - запускаем tinker для проверки работоспособности БД
 02. \DB::table('migrations')->get(); - выводит все строки в табилце
