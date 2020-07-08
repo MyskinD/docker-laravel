@@ -17,7 +17,7 @@
 01. docker-compose exec db bash - создаем пользователя mysql
 02. mysql -u root -p - ввозим пароль рута, указанного в docker-compose.yml
 03. show databases; - проверяем существование БД
-04. CREATE USER laraveluser'@'localhost' IDENTIFIED BY '123654'; - создаем пользователя по данным из .env
+04. CREATE USER 'laraveluser'@'localhost' IDENTIFIED BY '123654'; - создаем пользователя по данным из .env
 05. GRANT ALL ON laravel.* TO 'laraveluser'@'%' IDENTIFIED BY '123654'; - задаем права на указанную базу
 06. FLUSH PRIVILEGES; - применяем новые права пользователя
 07. SHOW GRANTS FOR laraveluser@localhost; - проверяем назначенные права пользователю
@@ -34,4 +34,4 @@
 
 01. docker-compose exec app php artisan ui vue --auth - устанавливаем модуль авторизации
 02. docker-compose exec app npm install - устанавливаем Laravel Mix
-03. docker-compose exec app npm run dev - start compiling js/css from resource to public
+03. docker-compose exec app npm run dev - компилируем js/css из resource в public
