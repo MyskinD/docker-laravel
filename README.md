@@ -32,6 +32,6 @@
 
 ## install Auth module (при необходимости)
 
-01. docker-compose exec app php artisan ui vue --auth - устанавливаем модуль авторизации
+01. docker-compose exec app php artisan ui vue --auth - устанавливаем модуль авторизации (уже установлен)
 02. docker-compose exec app npm install - устанавливаем Laravel Mix
 03. docker-compose exec app npm run dev - компилируем js/css из resource в public
