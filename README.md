@@ -2,12 +2,12 @@
 
 01. git clone https://github.com/MyskinD/docker-laravel.git - клонируем репозиторий
 02. заходим в папку проекта
-03. docker run --rm -v $(pwd):/app composer install - подтягиваем зависимости через контейнер-компойзер
-04. sudo chown -R $USER:$USER . - задаем права пользователя на каталог проекта (не root)
-05. в папке mysql создаем папку dbdata - для сохранения данных БД
-06. cp .env.example .env
-07. указываем в .env и docker-compose.yml - задаем настройки (название БД, имя пользователя, пароль)
-08. docker-compose up -d - поднимаем контейнеры
+03. sudo chown -R $USER:$USER . - задаем права пользователя на каталог проекта (не root)
+04. в папке mysql создаем папку dbdata - для сохранения данных БД
+05. cp .env.example .env
+06. указываем в .env и docker-compose.yml - задаем настройки (название БД, имя пользователя, пароль)
+07. docker-compose up -d - поднимаем контейнеры
+08. docker-compose exec app composer install - подтягиваем зависимости
 09. docker-compose exec app php artisan key:generate - генерируем ключ
 10. docker-compose exec app php artisan config:cache - кэшируем настройки (при необходимости)
 11. в /etc/hosts и /<папка проекта>/nginx/conf.d/app.conf указываем имя сервера
